@@ -27,14 +27,21 @@ http://localhost:8766/report/find_by_roll_number?roll_number=1
 http://localhost:8766/report_cb/find_by_roll_number?roll_number=1
 
 Consolidated Gateway Service:
+
 (Base Service)
+
 http://localhost:8767/
 
 (Delegated Services)
+
 http://localhost:8767/STUDENT-SERVICE/data
+
 http://localhost:8767/EXAM-SERVICE/data
+
 http://localhost:8767/SUBJECT-SERVICE/data
+
 http://localhost:8767/REGISTRATION-SERVICE/data
+
 http://localhost:8767/REPORT-SERVICE/report_cb/find_by_roll_number?roll_number=1
 
 
