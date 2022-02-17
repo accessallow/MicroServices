@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="eureka-client-student-service (4)" />
+        <module name="eureka-client-student-service (3)" />
+        <module name="GatewayServiceApp" />
+        <module name="eureka-client-student-service (5)" />
+        <module name="eureka-client-student-service (2)" />
+        <module name="eureka-client-student-service" />
+        <module name="eureka-client-student-service (1)" />
+        <module name="eureka-server" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="eureka-client-student-service" target="1.8" />
+      <module name="eureka-client-student-service (1)" target="1.8" />
+      <module name="eureka-client-student-service (2)" target="1.8" />
+      <module name="eureka-client-student-service (3)" target="1.8" />
+      <module name="eureka-client-student-service (4)" target="1.8" />
+      <module name="eureka-client-student-service (5)" target="1.8" />
+      <module name="eureka-server" target="1.8" />
+      <module name="GatewayServiceApp" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="GatewayServiceApp" options="-parameters" />
+      <module name="eureka-client-student-service" options="-parameters" />
+      <module name="eureka-client-student-service (1)" options="-parameters" />
+      <module name="eureka-client-student-service (2)" options="-parameters" />
+      <module name="eureka-client-student-service (3)" options="-parameters" />
+      <module name="eureka-client-student-service (4)" options="-parameters" />
+      <module name="eureka-client-student-service (5)" options="-parameters" />
+      <module name="eureka-server" options="-parameters" />
+    </option>
+  </component>
+</project>

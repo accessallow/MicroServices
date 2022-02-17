@@ -10,9 +10,9 @@
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.brillio</groupId>
-	<artifactId>eureka-client-student-service</artifactId>
+	<artifactId>eureka-client-student-monolith-service</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>eureka-client-student-service</name>
+	<name>eureka-client-student-monolith-service</name>
 	<description>Demo project for Spring Boot</description>
 
 	<properties>

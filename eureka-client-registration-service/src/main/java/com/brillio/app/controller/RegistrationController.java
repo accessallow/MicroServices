@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import com.brillio.app.model.RegistrationResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -23,6 +24,11 @@ public class RegistrationController {
 	@GetMapping("/data")
 	public List<Registration> getAll(){
 		return registrationRepo.findAll();
+	}
+
+	@GetMapping("/data2")
+	public List<RegistrationResponse> getAllR(){
+		return registrationRepo.findAllRegistrations();
 	}
 	
 	@PostMapping("/create")

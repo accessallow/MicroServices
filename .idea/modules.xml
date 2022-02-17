@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/eureka-client-gateway-service/GatewayServiceApp.iml" filepath="$PROJECT_DIR$/eureka-client-gateway-service/GatewayServiceApp.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/MicroServices.iml" filepath="$PROJECT_DIR$/.idea/MicroServices.iml" />
+      <module fileurl="file://$PROJECT_DIR$/eureka-client-exam-service/eureka-client-student-service.iml" filepath="$PROJECT_DIR$/eureka-client-exam-service/eureka-client-student-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/eureka-client-monolithic-app/eureka-client-student-service (1).iml" filepath="$PROJECT_DIR$/eureka-client-monolithic-app/eureka-client-student-service (1).iml" />
+      <module fileurl="file://$PROJECT_DIR$/eureka-client-report-service/eureka-client-student-service (2).iml" filepath="$PROJECT_DIR$/eureka-client-report-service/eureka-client-student-service (2).iml" />
+      <module fileurl="file://$PROJECT_DIR$/eureka-client-student-service/eureka-client-student-service (3).iml" filepath="$PROJECT_DIR$/eureka-client-student-service/eureka-client-student-service (3).iml" />
+      <module fileurl="file://$PROJECT_DIR$/eureka-client-subject-service/eureka-client-student-service (4).iml" filepath="$PROJECT_DIR$/eureka-client-subject-service/eureka-client-student-service (4).iml" />
+      <module fileurl="file://$PROJECT_DIR$/eureka-client-registration-service/eureka-client-student-service (5).iml" filepath="$PROJECT_DIR$/eureka-client-registration-service/eureka-client-student-service (5).iml" />
+      <module fileurl="file://$PROJECT_DIR$/eureka-server/eureka-server.iml" filepath="$PROJECT_DIR$/eureka-server/eureka-server.iml" />
+    </modules>
+  </component>
+</project>
