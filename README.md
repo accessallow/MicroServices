@@ -31,11 +31,11 @@ Consolidated Gateway Service:
 http://localhost:8767/
 
 (Delegated Services)
-localhost:8767/STUDENT-SERVICE/data
-localhost:8767/EXAM-SERVICE/data
-localhost:8767/SUBJECT-SERVICE/data
-localhost:8767/REGISTRATION-SERVICE/data
-localhost:8767/REPORT-SERVICE/report_cb/find_by_roll_number?roll_number=1
+http://localhost:8767/STUDENT-SERVICE/data
+http://localhost:8767/EXAM-SERVICE/data
+http://localhost:8767/SUBJECT-SERVICE/data
+http://localhost:8767/REGISTRATION-SERVICE/data
+http://localhost:8767/REPORT-SERVICE/report_cb/find_by_roll_number?roll_number=1
 
 
 
