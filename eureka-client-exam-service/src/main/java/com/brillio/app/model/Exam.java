@@ -13,23 +13,21 @@ public class Exam {
 	@Id
 	@Column(name = "exam_id")
 	@GeneratedValue(strategy = GenerationType.AUTO)
+	private int examId;
+
+	@Column(name = "registration_id")
 	private int registrationId;
-	
-	@Column(name = "roll_no")
-	private int rollNumber;
-	
-	@Column(name = "subject_code") 
-	private int subjectCode;
-	
+
 	@Column(name = "marks")
 	private int marks;
 
-	public int getRollNumber() {
-		return rollNumber;
+
+	public int getExamId() {
+		return examId;
 	}
 
-	public void setRollNumber(int rollNumber) {
-		this.rollNumber = rollNumber;
+	public void setExamId(int examId) {
+		this.examId = examId;
 	}
 
 	public int getRegistrationId() {
@@ -40,14 +38,6 @@ public class Exam {
 		this.registrationId = registrationId;
 	}
 
-	public int getSubjectCode() {
-		return subjectCode;
-	}
-
-	public void setSubjectCode(int subjectCode) {
-		this.subjectCode = subjectCode;
-	}
-
 	public int getMarks() {
 		return marks;
 	}
@@ -55,12 +45,4 @@ public class Exam {
 	public void setMarks(int marks) {
 		this.marks = marks;
 	}
-
-	@Override
-	public String toString() {
-		return "Exam [registrationId=" + registrationId + ", rollNumber=" + rollNumber + ", subjectCode=" + subjectCode
-				+ ", marks=" + marks + "]";
-	}
-
-	
 }

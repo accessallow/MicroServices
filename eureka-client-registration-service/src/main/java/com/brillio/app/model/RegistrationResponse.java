@@ -1,18 +1,19 @@
 package com.brillio.app.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
 
-@Entity
 public class RegistrationResponse extends Registration{
-    @Column(name = "studentName")
     private String studentName;
-    @Column(name = "subjectName")
     private String subjectName;
 
     public RegistrationResponse(String studentName, String subjectName) {
         this.studentName = studentName;
         this.subjectName = subjectName;
+    }
+
+    public RegistrationResponse(Registration r){
+        this.setRegistrationId(r.getRegistrationId());
+        this.setRollNumber(r.getRollNumber());
+        this.setSubjectCode(r.getSubjectCode());
     }
 
     public String getStudentName() {

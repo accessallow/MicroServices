@@ -4,11 +4,11 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import com.brillio.app.model.ExamResponse;
+import com.brillio.app.service.ExamService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.*;
 
 import com.brillio.app.model.Exam;
 import com.brillio.app.repository.ExamRepository;
@@ -19,28 +19,41 @@ import com.brillio.app.repository.ExamRepository;
 public class ExamController {
 	@Autowired
 	ExamRepository examRepo;
+
+	@Autowired
+	ExamService examService;
 	
 	@GetMapping("/data")
 	public List<Exam> getAll(){
 		return examRepo.findAll();
 	}
-	
-	@PostMapping("/create")
-	public Exam createRegistration(HttpServletRequest  request){
+
+	@GetMapping("/detailed_data")
+	public List<ExamResponse> getDetailedData(){
+		return examService.getDetailedRegistrationData();
+	}
+
+	@PostMapping(value = "/create",consumes = MediaType.APPLICATION_JSON_VALUE)
+	public Exam create(@RequestBody Exam r){
 		Exam s = new Exam();
-		s.setRollNumber(Integer.parseInt(request.getParameter("roll_number")));
-		s.setSubjectCode(Integer.parseInt(request.getParameter("subject_code")));
-		s.setMarks(Integer.parseInt(request.getParameter("marks")));
-		
-		System.out.println(s);
-		
+		s.setRegistrationId(r.getRegistrationId());
+		s.setMarks(r.getMarks());
 		examRepo.save(s);
 		return s;
 	}
-	
-	@GetMapping("/find_by_roll_number")
-	public List<Exam> findByRollNumber(HttpServletRequest  request) {
-		int rollNumber = Integer.parseInt(request.getParameter("roll_number"));
-		return examRepo.findByRollNumber(rollNumber);
+
+	@PostMapping(value = "/delete",consumes = MediaType.APPLICATION_JSON_VALUE)
+	public Exam delete(@RequestBody Exam s){
+		examRepo.delete(s);
+		return s;
+	}
+
+	@PostMapping(value = "/update",consumes = MediaType.APPLICATION_JSON_VALUE)
+	public Exam update(@RequestBody Exam s){
+		Exam sDb = examRepo.findById(s.getExamId()).get();
+		sDb.setRegistrationId(s.getRegistrationId());
+		sDb.setMarks(s.getMarks());
+		examRepo.save(sDb);
+		return sDb;
 	}
 }
