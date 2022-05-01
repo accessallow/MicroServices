@@ -1,10 +1,11 @@
 package com.brillio.app.controller;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 import javax.servlet.http.HttpServletRequest;
 
+import com.brillio.app.model.Registration;
+import com.brillio.app.model.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -26,11 +27,21 @@ public class ReportControllerCB {
 
 		int rollNumber = Integer.parseInt(request.getParameter("roll_number"));
 		Map<String,Object[]> responseMap = new HashMap<String, Object[]>();
-		
-		
+
+		Registration[] registrations = reportService.getRegistrationData(rollNumber);
+		Set<Integer> studentRegisteredSubjects = new HashSet<>();
+		Arrays.asList(registrations).forEach(r -> {
+			studentRegisteredSubjects.add(r.getSubjectCode());
+		});
+		List<Subject> studentSubjects = new ArrayList<>();
+		Arrays.asList(reportService.getSubjectData()).forEach(s -> {
+			if(studentRegisteredSubjects.contains(s.getCode())){
+				studentSubjects.add(s);
+			}
+		});
 		responseMap.put("student",reportService.getStudentData(rollNumber));
-		responseMap.put("subjects",reportService.getSubjectData());
-		responseMap.put("registration",reportService.getRegistrationData(rollNumber));
+		responseMap.put("subjects",studentSubjects.toArray());
+		responseMap.put("registration",registrations);
 		responseMap.put("exams",reportService.getExamData(rollNumber));
 		
 		return responseMap;

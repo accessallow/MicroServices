@@ -1,5 +1,10 @@
 package com.brillio.app.service;
 
+import com.brillio.app.model.Exam;
+import com.brillio.app.model.Registration;
+import com.brillio.app.model.Student;
+import com.brillio.app.model.Subject;
+import org.apache.commons.lang.ArrayUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
@@ -14,76 +19,77 @@ public class ReportServiceLoadBalanced {
 	RestTemplate restTemplate;
 	
 	
-	@HystrixCommand(fallbackMethod = "myFallbackMethod",
+	@HystrixCommand(fallbackMethod = "studentFallback",
 			commandProperties = {
 					@HystrixProperty(name="execution.isolation.thread.timeoutInMilliseconds",value="1000"),
 					@HystrixProperty(name="circuitBreaker.requestVolumeThreshold",value="3"),
 					@HystrixProperty(name="circuitBreaker.sleepWindowInMilliseconds",value="5000"),
 					@HystrixProperty(name="circuitBreaker.errorThresholdPercentage",value="50"),
 			} )
-	public Object[] getStudentData(int rollNumber) {
+	public Student[] getStudentData(int rollNumber) {
 		String urlStudent = "http://STUDENT-SERVICE/find_by_roll_number?roll_number=" + rollNumber;
 
-		Object[] studentObjs = restTemplate.getForEntity(urlStudent, Object[].class).getBody();
+		Student[] studentObjs = restTemplate.getForEntity(urlStudent, Student[].class).getBody();
 		
 		return studentObjs;
 	}
 	
 	
-	@HystrixCommand(fallbackMethod = "myFallbackMethod",
+	@HystrixCommand(fallbackMethod = "subjectFallback",
 			commandProperties = {
 					@HystrixProperty(name="execution.isolation.thread.timeoutInMilliseconds",value="1000"),
 					@HystrixProperty(name="circuitBreaker.requestVolumeThreshold",value="3"),
 					@HystrixProperty(name="circuitBreaker.sleepWindowInMilliseconds",value="5000"),
 					@HystrixProperty(name="circuitBreaker.errorThresholdPercentage",value="50"),
 			})
-	public Object[] getSubjectData() {
+	public Subject[] getSubjectData() {
 		String urlSubjects = "http://SUBJECT-SERVICE/data";
 
-		Object[] subjectObjs = restTemplate.getForEntity(urlSubjects, Object[].class).getBody();
+		Subject[] subjectObjs = restTemplate.getForEntity(urlSubjects, Subject[].class).getBody();
 		
 		return subjectObjs;
 	}
 	
-	@HystrixCommand(fallbackMethod = "myFallbackMethod",
+	@HystrixCommand(fallbackMethod = "registrationFallback",
 			commandProperties = {
 					@HystrixProperty(name="execution.isolation.thread.timeoutInMilliseconds",value="1000"),
 					@HystrixProperty(name="circuitBreaker.requestVolumeThreshold",value="3"),
 					@HystrixProperty(name="circuitBreaker.sleepWindowInMilliseconds",value="5000"),
 					@HystrixProperty(name="circuitBreaker.errorThresholdPercentage",value="50"),
 			})
-	public Object[] getRegistrationData(int rollNumber) {
+	public Registration[] getRegistrationData(int rollNumber) {
 		String urlRegistration = "http://REGISTRATION-SERVICE/find_by_roll_number?roll_number=" + rollNumber;
 
-		Object[] registrationObjs = restTemplate.getForEntity(urlRegistration, Object[].class).getBody();
+		Registration[] registrationObjs = restTemplate.getForEntity(urlRegistration, Registration[].class).getBody();
 		
 		return registrationObjs;
 	}
 	
-	@HystrixCommand(fallbackMethod = "myFallbackMethod",
+	@HystrixCommand(fallbackMethod = "examFallback",
 			commandProperties = {
 					@HystrixProperty(name="execution.isolation.thread.timeoutInMilliseconds",value="1000"),
 					@HystrixProperty(name="circuitBreaker.requestVolumeThreshold",value="3"),
 					@HystrixProperty(name="circuitBreaker.sleepWindowInMilliseconds",value="5000"),
 					@HystrixProperty(name="circuitBreaker.errorThresholdPercentage",value="50"),
 			})
-	public Object[] getExamData(int rollNumber) {
+	public Exam[] getExamData(int rollNumber) {
 		String urlExam = "http://EXAM-SERVICE/find_by_roll_number?roll_number=" + rollNumber;
 
-		Object[] examObjs = restTemplate.getForEntity(urlExam, Object[].class).getBody();
+		Exam[] examObjs = restTemplate.getForEntity(urlExam, Exam[].class).getBody();
 		
 		return examObjs;
 	}
-	
-	
-	private static final Object[] EMPTY_ARRAY = {};
-	
-	public Object[] myFallbackMethod(int rollNumber) {
-		return EMPTY_ARRAY;
+
+	public Student[] studentFallback(int rollNumber){
+		return new Student[0];
 	}
-	
-	
-	public Object[] myFallbackMethod() {
-		return EMPTY_ARRAY;
+	public Subject[] subjectFallback(){
+		return new Subject[0];
+	}
+	public Registration[] registrationFallback(int rollNumber){
+		return new Registration[0];
+	}
+	public Exam[] examFallback(int rollNumber){
+		return new Exam[0];
 	}
 }

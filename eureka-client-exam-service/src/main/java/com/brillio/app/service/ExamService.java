@@ -43,4 +43,20 @@ public class ExamService {
         });
         return response;
     }
+
+    public List<Exam> findByRollNumber(int rollNumber) {
+        String urlRegistration = "http://REGISTRATION-SERVICE/find_by_roll_number?roll_number=" + rollNumber;
+        Registration[] registrationObjs = restTemplate.getForEntity(urlRegistration, Registration[].class).getBody();
+        Set<Integer> regIds = new HashSet<>();
+        Arrays.asList(registrationObjs).forEach(r -> regIds.add(r.getRegistrationId()));
+        List<Exam> exams = this.examRepository.findAll();
+
+        List<Exam> studentExams = new ArrayList<>();
+        exams.forEach(e -> {
+            if(regIds.contains(e.getRegistrationId())){
+                studentExams.add(e);
+            }
+        });
+        return studentExams;
+    }
 }

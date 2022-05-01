@@ -5,6 +5,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 
 import com.brillio.app.model.ExamResponse;
+import com.brillio.app.model.Registration;
 import com.brillio.app.service.ExamService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -27,6 +28,13 @@ public class ExamController {
 	public List<Exam> getAll(){
 		return examRepo.findAll();
 	}
+
+	@GetMapping("/find_by_roll_number")
+	public List<Exam> findByRollNumber(HttpServletRequest  request) {
+		int rollNumber = Integer.parseInt(request.getParameter("roll_number"));
+		return examService.findByRollNumber(rollNumber);
+	}
+
 
 	@GetMapping("/detailed_data")
 	public List<ExamResponse> getDetailedData(){
