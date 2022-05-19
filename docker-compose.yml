@@ -1,0 +1,65 @@
+version: "3.7"
+services:
+    eureka:
+        image: microservices/eureka
+        ports:
+            - "8761:8761"
+        healthcheck:
+            test: "exit 0"
+        
+    
+    student:
+        image: microservices/student
+        ports:
+            - "8762:8080"
+        depends_on:
+            eureka:
+                condition: service_healthy
+        
+    subject:
+        image: microservices/subject
+        ports:
+            - "8763:8080"
+        depends_on:
+            eureka:
+                condition: service_healthy
+            
+    reg:
+        image: microservices/reg
+        ports:
+            - "8764:8080"
+        depends_on:
+            eureka:
+                condition: service_healthy
+            
+    exam:
+        image: microservices/exam
+        ports:
+            - "8765:8080"
+        depends_on:
+            eureka:
+                condition: service_healthy
+            
+    report:
+        image: microservices/report
+        ports:
+            - "8766:8080"
+        depends_on:
+            eureka:
+                condition: service_healthy
+            
+    gateway:
+        image: microservices/gateway
+        ports:
+            - "8767:8080"
+        depends_on:
+            eureka:
+                condition: service_healthy
+    
+    spa:
+        image: microservices/spa
+        ports:
+            - "80:80"
+        depends_on:
+            eureka:
+                condition: service_healthy

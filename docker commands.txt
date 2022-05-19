@@ -1,0 +1,27 @@
+docker build -t microservices/eureka .
+
+docker run -p 8761:8761 microservices/eureka
+
+docker build -t microservices/subject .
+
+docker run -p 8763:8763 microservices/subject
+
+
+mvn package -DskipTests
+
+
+docker build -t microservices/exam .
+docker build -t microservices/reg .
+docker build -t microservices/gateway .
+docker build -t microservices/report .
+docker build -t microservices/student .
+
+
+
+docker run -p 8761:8761 microservices/eureka
+docker run -p 8080:8762 microservices/student
+docker run -p 8080:8763 microservices/subject
+docker run -p 8080:8764 microservices/reg
+docker run -p 8080:8765 microservices/exam
+docker run -p 8080:8766 microservices/report
+docker run -p 8080:8767 microservices/gateway
