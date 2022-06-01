@@ -9,13 +9,13 @@ docker run -p 8763:8763 microservices/subject
 
 mvn package -DskipTests
 
-
+docker build -t microservices/subject .
 docker build -t microservices/exam .
 docker build -t microservices/reg .
 docker build -t microservices/gateway .
 docker build -t microservices/report .
 docker build -t microservices/student .
-
+docker build -t microservices/spa .
 
 
 docker run -p 8761:8761 microservices/eureka

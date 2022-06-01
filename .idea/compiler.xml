@@ -8,21 +8,31 @@
         <outputRelativeToContentRoot value="true" />
         <module name="eureka-client-student-service (4)" />
         <module name="eureka-client-student-service (3)" />
-        <module name="GatewayServiceApp" />
+        <module name="eureka-client-registration-service" />
         <module name="eureka-client-student-service (5)" />
+        <module name="eureka-client-exam-service" />
         <module name="eureka-client-student-service (2)" />
-        <module name="eureka-client-student-service" />
         <module name="eureka-client-student-service (1)" />
+        <module name="eureka-client-student-monolith-service" />
         <module name="eureka-server" />
+        <module name="eureka-client-subject-service" />
+        <module name="GatewayServiceApp" />
+        <module name="eureka-client-report-service" />
+        <module name="eureka-client-student-service" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="eureka-client-exam-service" target="1.8" />
+      <module name="eureka-client-registration-service" target="1.8" />
+      <module name="eureka-client-report-service" target="1.8" />
+      <module name="eureka-client-student-monolith-service" target="1.8" />
       <module name="eureka-client-student-service" target="1.8" />
       <module name="eureka-client-student-service (1)" target="1.8" />
       <module name="eureka-client-student-service (2)" target="1.8" />
       <module name="eureka-client-student-service (3)" target="1.8" />
       <module name="eureka-client-student-service (4)" target="1.8" />
       <module name="eureka-client-student-service (5)" target="1.8" />
+      <module name="eureka-client-subject-service" target="1.8" />
       <module name="eureka-server" target="1.8" />
       <module name="GatewayServiceApp" target="1.8" />
     </bytecodeTargetLevel>
@@ -30,12 +40,17 @@
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="GatewayServiceApp" options="-parameters" />
+      <module name="eureka-client-exam-service" options="-parameters" />
+      <module name="eureka-client-registration-service" options="-parameters" />
+      <module name="eureka-client-report-service" options="-parameters" />
+      <module name="eureka-client-student-monolith-service" options="-parameters" />
       <module name="eureka-client-student-service" options="-parameters" />
       <module name="eureka-client-student-service (1)" options="-parameters" />
       <module name="eureka-client-student-service (2)" options="-parameters" />
       <module name="eureka-client-student-service (3)" options="-parameters" />
       <module name="eureka-client-student-service (4)" options="-parameters" />
       <module name="eureka-client-student-service (5)" options="-parameters" />
+      <module name="eureka-client-subject-service" options="-parameters" />
       <module name="eureka-server" options="-parameters" />
     </option>
   </component>

@@ -1,0 +1,34 @@
+microservices/spa       latest          6777eff83ac9   11 minutes ago   20.8MB
+microservices/subject   latest          ef27f52bd9e4   38 minutes ago   171MB
+microservices/student   latest          5ad7c663f2ba   38 minutes ago   171MB
+microservices/report    latest          a80ec94aaa59   38 minutes ago   171MB
+microservices/reg       latest          b6485a79196d   39 minutes ago   171MB
+microservices/gateway   latest          2281b845dca7   39 minutes ago   149MB
+microservices/exam      latest          3764e9e9a9ce   39 minutes ago   171MB
+microservices/eureka    latest          a2f037fa6912   39 minutes ago   154MB
+
+
+sudo docker image rm -f 6777eff83ac9 ef27f52bd9e4 5ad7c663f2ba a80ec94aaa59 b6485a79196d 2281b845dca7 3764e9e9a9ce a2f037fa6912
+
+docker tag local-image:tagname new-repo:tagname
+docker push new-repo:tagname
+
+docker tag local-image:tagname microservices:tagname
+
+sudo docker tag microservices/spa accessallow/microservices:spa
+sudo docker tag microservices/subject accessallow/microservices:subject
+sudo docker tag microservices/student accessallow/microservices:student
+sudo docker tag microservices/report accessallow/microservices:report
+sudo docker tag microservices/reg accessallow/microservices:reg
+sudo docker tag microservices/gateway accessallow/microservices:gateway
+sudo docker tag microservices/exam accessallow/microservices:exam
+sudo docker tag microservices/eureka accessallow/microservices:eureka
+
+sudo docker push accessallow/microservices:spa
+sudo docker push accessallow/microservices:subject
+sudo docker push accessallow/microservices:student
+sudo docker push accessallow/microservices:report
+sudo docker push accessallow/microservices:reg
+sudo docker push accessallow/microservices:gateway
+sudo docker push accessallow/microservices:exam
+sudo docker push accessallow/microservices:eureka
